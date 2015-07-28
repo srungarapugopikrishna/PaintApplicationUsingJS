@@ -195,20 +195,7 @@ function getRandomColor() {
     }
     return color;
 }
- 
-function drawSquare(x, y) {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.beginPath();
-    centerX = startX + (x - startX) / 2;
-    centerY = startY + (y - startY) / 2;
-    circleRad     = Math.abs(y - centerY);
-    ctx.arc(centerX, centerY, circleRad, 0, 2*Math.PI, false)
-    ctx.closePath();    
-    ctx.fill();
-     
-}
-
-function handleMouseDown(e) {
+ function handleMouseDown(e) {
     e.preventDefault();
     e.stopPropagation();
 	startX = e.offsetX;
