@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Circles With Canvas</title>
+	<style type="text/css">
+		#canvas {
+		    border:1px solid blue;
+			margin-left: 12%;
+		}
+		#canvas1 {
+		    border:1px solid blue;
+			margin-left: 12%;
+		}
+		#hint {
+		    border:1px solid black;
+			background-color:yellow;		
+			text-align: center;
+			color:red;	
+			display:none;
+		}
+		 
+		#functionalities{
+			text-align: center;
+		}
+		table, th, td {
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
+	 
+    .canvas { position: absolute; top: 1%; left: 50; }
+ 
+	</style>
+	
+</head>
+<body>
+	<div id='functionalities' style="max-width:300px;">
+	<div id='hint'>Double click on an object to delete it.</div>
+	<table >
+		  <tr>
+			<td><img src="circle.png" width="25" height="25"  style="cursor:auto;" onclick="switchOnCreationMode('circle')" title="Create Circle"></td>
+			<td><img src="rectangle.png" width="25" height="25" style="cursor:auto;" onclick="switchOnCreationMode('rectangle')" title="Create Square"></td> 
+			<td><img src="triangle.png" width="25" height="25" style="cursor:auto;" onclick="switchOnCreationMode('triangle')" title="Create Triangle"></td>
+		  </tr>
+		  <tr>
+			<td><img src="line.png" width="25" height="25" style="cursor:auto;" onclick="switchOnCreationMode('line')" title="Create Triangle"></td>
+			<td><img src="move_cursor.png" width="25" height="25" style="cursor:auto;" onclick="switchOnMovementMode()" title="Move Shape"></td> 
+			<td><img src="reset.png" width="25" height="25" style="cursor:auto;" onclick="clearCanvas()" title="Reset"></td>
+		  </tr>		  
+		</table>
+		
+
+		
+	</div>
+	<br>
+	<div style="float:left">
+		<table >
+		  <tr>
+			<td><img id="bulb" src="images/bulb.png" width="75" height="75"  style="cursor:auto;" onclick="drawImageOnCanvas('bulb')"></td>
+		  </tr>
+		  <tr>
+			<td><img id="Human" src="images/Human.png" width="75" height="75"  style="cursor:auto;" onclick="drawImageOnCanvas('Human')"></td>
+		  </tr>
+		  <tr>
+			<td><img id="duck" src="images/duck.png" width="75" height="75"  style="cursor:auto;" onclick="drawImageOnCanvas('duck')"></td>
+		  </tr>
+		  <tr>
+			<td><img id="flower" src="images/flower.png" width="75" height="75"  style="cursor:auto;" onclick="drawImageOnCanvas('flower')"></td>
+		  </tr>
+		  <tr>
+			<td>
+				<b>Size:</b>
+				<td><img src="10.png" width="25" height="25" style="cursor:auto;" onclick="switchOnBrushMode(5)" title="small"></td>
+				<td><img src="15.png" width="25" height="25" style="cursor:auto;" onclick="switchOnBrushMode(12)" title="medium"></td> 
+				<td><img src="20.png" width="25" height="25" style="cursor:auto;" onclick="switchOnBrushMode(22)" title="large"></td>
+			</td>
+		  </tr>
+		</table>
+		
+	</div>
+	<div>
+	<table width="10%">  
+		  <tr>
+			<td width="20%" bgcolor="#000000" style="cursor:pointer;" onclick="getColor('#000000')">&nbsp;</td>
+			<td width="20%" bgcolor="#696969" style="cursor:pointer;" onclick="getColor('#696969')">&nbsp;</td>
+			<td width="20%" bgcolor="#8B0000" style="cursor:pointer;" onclick="getColor('#8B0000')">&nbsp;</td>
+			<td width="20%" bgcolor="#FF0000" style="cursor:pointer;" onclick="getColor('#FF0000')">&nbsp;</td>
+			<td width="20%" bgcolor="#FF4500" style="cursor:pointer;" onclick="getColor('#FF4500')">&nbsp;</td>
+		  </tr>
+		  <tr>
+			<td width="20%" bgcolor="#FFFFFF" style="cursor:pointer;" onclick="getColor('#FFFFFF')">&nbsp;</td>
+			<td width="20%" bgcolor="#DCDCDC" style="cursor:pointer;" onclick="getColor('#DCDCDC')">&nbsp;</td>
+			<td width="20%" bgcolor="#8B4513" style="cursor:pointer;" onclick="getColor('#8B4513')">&nbsp;</td>
+			<td width="20%" bgcolor="#FF1493" style="cursor:pointer;" onclick="getColor('#FF1493')">&nbsp;</td>
+			<td width="20%" bgcolor="#FFA500" style="cursor:pointer;" onclick="getColor('#FFA500')">&nbsp;</td>
+		  </tr>
+		  <tr>
+			<td width="20%" bgcolor="#FFFF00" style="cursor:pointer;" onclick="getColor('#FFFF00')">&nbsp;</td>
+			<td width="20%" bgcolor="#228B22" style="cursor:pointer;" onclick="getColor('#228B22')">&nbsp;</td>
+			<td width="20%" bgcolor="#1E90FF" style="cursor:pointer;" onclick="getColor('#1E90FF')">&nbsp;</td>
+			<td width="20%" bgcolor="#483D8B" style="cursor:pointer;" onclick="getColor('#483D8B')">&nbsp;</td>
+			<td width="20%" bgcolor="#D8BFD8" style="cursor:pointer;" onclick="getColor('#D8BFD8')">&nbsp;</td>
+		  </tr>
+		  <tr>
+			<td width="20%" bgcolor="#FFA07A" style="cursor:pointer;" onclick="getColor('#FFA07A')">&nbsp;</td>
+			<td width="20%" bgcolor="#32CD32" style="cursor:pointer;" onclick="getColor('#32CD32')">&nbsp;</td>
+			<td width="20%" bgcolor="#00CED1" style="cursor:pointer;" onclick="getColor('#00CED1')">&nbsp;</td>
+			<td width="20%" bgcolor="#663399" style="cursor:pointer;" onclick="getColor('#663399')">&nbsp;</td>
+			<td width="20%" bgcolor="#D2B48C" style="cursor:pointer;" onclick="getColor('#D2B48C')">&nbsp;</td>
+		  </tr>
+		  <tr>
+			<td width="20%" bgcolor="#B8860B" style="cursor:pointer;" onclick="getColor('#B8860B')">&nbsp;</td>
+			<td width="20%" bgcolor="#FAFAD2" style="cursor:pointer;" onclick="getColor('#FAFAD2')">&nbsp;</td>
+			<td width="20%" bgcolor="#FF69B4" style="cursor:pointer;" onclick="getColor('#FF69B4')">&nbsp;</td>
+			<td width="20%" bgcolor="#FFF0F5" style="cursor:pointer;" onclick="getColor('#FFF0F5')">&nbsp;</td>
+			<td width="20%" bgcolor="#000080" style="cursor:pointer;" onclick="getColor('#000080')">&nbsp;</td>
+		  </tr>
+		</table>
+		</div>
+		<canvas class="canvas" id='canvas1'  width="800" height="500" >
+		Unsupported browser
+	</canvas>
+ <canvas class="canvas" id='canvas'  width="800" height="500" >
+		Unsupported browser
+	</canvas>
+<!--	<canvas class="canvas" id='canvas1'  width="800" height="500" >
+		Unsupported browser
+	</canvas>
+-->	 
+	
+
+<script src="shapesJS.js"></script>
+
+</body>
+</html>
